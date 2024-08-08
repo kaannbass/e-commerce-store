@@ -7,7 +7,7 @@ git clone https://github.com/kaannbass/e-commerce-store.git
 ```
 Then navigate to the project directory and install the necessary dependencies:
 ```bash
-cd eteration
+cd e-commerce-store
 ```
 ```bash
 npm install
