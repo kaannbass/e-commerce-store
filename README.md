@@ -39,6 +39,7 @@ This project is a mobile e-commerce application developed using React Native, Ty
 
 # Technical Details
 - **Framework:** React
-- **Programming:** Language: TypeScript
+- **Programming Language:** TypeScript
 - **State:** Management: Redux Toolkit
 - **API:** https://fakestoreapi.com
+- **Build Tool:** Vite
