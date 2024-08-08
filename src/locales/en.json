@@ -1,0 +1,81 @@
+{
+    "HomePage": {
+        "title": "Your Dream Job Awaits!",
+        "text": "Discover thousands of job listings tailored to your skills and interests.",
+        "loginButton": "Login",
+        "registerButton": "Register",
+        "basket": "My Cart",
+        "populerProducts1": "Most Added to Cart",
+        "populerProducts2": "Top Picks",
+        "populerProducts3": "Most Favorited",
+        "search": "Search",
+        "electronics": "electronics",
+        "jewelery": "jewelery",
+        "men's clothing": "men's clothing",
+        "women's clothing": "women's clothing"
+    },
+    "Footer": {
+        "text": "All Rights Reserved."
+    },
+    "LoginPage": {
+        "title": "Log In to your account",
+        "password": "Password",
+        "url": "login",
+        "rulesEmail": "Please input your Email!",
+        "rulesPassword": "Please input your Password!",
+        "forgotPassword": "Forgot password?",
+        "account": "Don't have an account?",
+        "account2": "Sign up now",
+        "ok": "Ok",
+        "otp": "Please enter the OTP sent to your email address:"
+    },
+    "FavoritedPage": {
+        "url": "favorite"
+    },
+    "RegisterPage": {
+        "title": "Create a New Account",
+        "url": "register",
+        "alreadyHaveAccount": "Already Have Account? "
+    },
+    "BasketPage": {
+        "url": "my-cart",
+        "please": "Please",
+        "emptyMessage": "Your cart is empty.",
+        "modalTitle": "Success",
+        "successMessage": "Products have been successfully purchased.",
+        "redirectMessage": "You will be redirected to the homepage in",
+        "title": "Order Summary",
+        "confirmCart": "Confirm Cart",
+        "totalItems": "Total Items",
+        "shippingTotal": "Shipping Total",
+        "freeShipping": "Free shipping for orders over 5 $ (Seller covers)",
+        "grandTotal": "Total",
+        "popularItemsMessage": "🔥 Products in your cart have sold 5000+ times in the last 3 days!",
+        "discountCode": "Enter Discount Code",
+        "enterDiscountCode": "Enter Discount Code",
+        "authControl": "Please Log In."
+    },
+    "ProductDetailPage": {
+        "addToCart": "Add to Cart",
+        "price": "Price"
+    },
+    "ProductPage": {
+        "url": "product",
+        "filter": "Filter",
+        "category": "Category",
+        "allCategories": "All Categories",
+        "priceLowToHigh": "Price: Low to High",
+        "priceHighToLow": "Price: High to Low",
+        "priceRange": "Price Range",
+        "sortBy": "Sort By"
+    },
+    "NewProductPage": {
+        "url": "new-product"
+    },
+    "AddNewProductPage": {
+        "url": "add-new-product",
+        "sidebarText1": "Home",
+        "sidebarText2": "New Product",
+        "sidebarText3": "Add Product"
+    }
+}

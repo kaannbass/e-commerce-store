@@ -1,0 +1,81 @@
+{
+    "HomePage": {
+        "title": "Hayalindeki iş seni bekliyor!",
+        "text": "Becerilerin ve ilgi alanların doğrultusunda binlerce iş ilanını keşfet.",
+        "loginButton": "Giriş",
+        "registerButton": "Kayıt Ol",
+        "basket": "Sepetim",
+        "populerProducts1": "Sepete En Çok Eklenenler",
+        "populerProducts2": "En Çok Öne Çıkanlar",
+        "populerProducts3": "En Çok Favoriye Eklenenler",
+        "search": "Ara",
+        "electronics": "elektronik",
+        "jewelery": "mücevher",
+        "men's clothing": "erkek giyim",
+        "women's clothing": "kadın giyim"
+    },
+    "Footer": {
+        "text": "Her hakkı saklıdır."
+    },
+    "FavoritedPage": {
+        "url": "favori"
+    },
+    "LoginPage": {
+        "title": "Hesabınıza giriş yapın",
+        "password": "Şifre",
+        "url": "giris",
+        "rulesEmail": "Lütfen e-posta adresinizi giriniz.",
+        "rulesPassword": "Lütfen şifrenizi giriniz.",
+        "forgotPassword": "Şifremi unuttum?",
+        "account": "Hesabınız yok mu?",
+        "account2": "Hemen kaydolun",
+        "ok": "Tamam",
+        "otp": "Email adresinize gönderilen OTP'yi giriniz:"
+    },
+    "RegisterPage": {
+        "title": "Yeni Hesap Oluştur",
+        "url": "kayit-ol",
+        "alreadyHaveAccount": "Hesabınız var mı? "
+    },
+    "BasketPage": {
+        "url": "sepetim",
+        "emptyMessage": "Sepetinizde ürün bulunmamaktadır.",
+        "modalTitle": "Başarılı",
+        "successMessage": "Ürün başarılı bir şekilde alındı.",
+        "redirectMessage": "saniye içinde ana sayfaya yönlendirileceksiniz.",
+        "title": "Sipariş Özeti",
+        "confirmCart": "Sepeti Onayla",
+        "totalItems": "Ürünün Toplamı",
+        "shippingTotal": "Kargo Toplam",
+        "freeShipping": "5 $ ve Üzeri Kargo Bedava (Satıcı Karşılar)",
+        "grandTotal": "Toplam",
+        "popularItemsMessage": "🔥 Sepetindeki ürünler son 3 günde 5000+ adet satıldı!",
+        "discountCode": "İndirim Kodu Giriniz",
+        "enterDiscountCode": "İndirim Kodu Girin",
+        "please": "Lütfen",
+        "authControl": "Lütfen giriş yapınız."
+    },
+    "ProductDetailPage": {
+        "addToCart": "Sepete Ekle",
+        "price": "Fiyatı"
+    },
+    "ProductPage": {
+        "url": "urunler",
+        "filter": "Filtre",
+        "category": "Kategori",
+        "allCategories": "Tüm Kategoriler",
+        "priceLowToHigh": "Fiyat: Düşükten Yükseğe",
+        "priceHighToLow": "Fiyat: Yüksekten Düşüğe",
+        "priceRange": "Fiyat Aralığı",
+        "sortBy": "Göre Sırala"
+    },
+    "NewProductPage": {
+        "url": "yeni-urunler"
+    },
+    "AddNewProductPage": {
+        "url": "yeni-urun-ekle",
+        "sidebarText1": "Ana Sayfa",
+        "sidebarText2": "Yeni Ürünler",
+        "sidebarText3": "Yeni Ürün Ekle"
+    }
+}

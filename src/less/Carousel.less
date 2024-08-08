@@ -1,0 +1,71 @@
+.swiper-scrollbar {
+  display: none;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  padding: 20px; 
+  background-color: rgba(212, 207, 207, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  border-radius: 50%; 
+  transition: background-color 0.3s;
+
+  &::after {
+    color: black;
+  }
+
+  &:hover {
+    background-color: rgba(173, 166, 166, 0.7);
+  }
+}
+
+
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 30px;
+  }
+}
+
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 40px;
+    
+  }
+}
+
+@media (min-width: 1025px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 30px;
+  }
+}
+
+.slide-image {
+    transition: transform 0.3s ease;
+  }
+  
+  .ant-card:hover .slide-image {
+    transform: scale(0.98); 
+  }
+  

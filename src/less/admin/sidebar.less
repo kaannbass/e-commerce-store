@@ -1,0 +1,71 @@
+@screen-xs: 480px;
+@screen-xs-min: 480px;
+@screen-sm-min: 995px;
+@screen-sm-max: 767px;
+
+.custom-sider {
+  background-color: @brand-color !important;
+  color: white !important;
+
+  .ant-menu-item {
+    color: white !important;
+
+    &:active {
+      color: @brand-color !important;
+    }
+
+    &-selected {
+      background-color: white !important;
+      color: @brand-color !important;
+
+      &:hover {
+        background-color: white !important;
+      }
+    }
+
+    &:hover {
+      background-color: lighten(@brand-color, 7%) !important;
+      color: white;
+    }
+  }
+
+  @media (max-width: @screen-xs) {
+    &.ant-layout-sider {
+      position: fixed;
+      z-index: 1000;
+      height: 100%;
+    }
+  }
+
+  @media (min-width: @screen-xs-min) {
+    &.ant-layout-sider {
+      position: fixed;
+      z-index: 1000;
+      height: 100%;
+    }
+  }
+
+  @media (min-width: @screen-sm-min) {
+    &.ant-layout-sider {
+      position: relative;
+      height: auto;
+    }
+  }
+}
+
+.logo-container {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+
+  .logo-img {
+    width: 75%;
+    margin-top: 10px;
+
+    @media (min-width: @screen-sm-min) {
+      margin: 20px;
+    }
+  }
+}

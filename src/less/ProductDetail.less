@@ -1,0 +1,43 @@
+.product-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .product-details {
+    text-align: center;
+    justify-content: 'center';
+    .price-cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+  
+      p {
+        margin: 0;
+      }
+  
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+  
+        .quantity {
+          display: inline-block;
+          width: 30px;
+          text-align: center;
+        }
+  
+        .add-to-cart {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .product-image {
+      width: 100%;
+    }
+  }
+  
