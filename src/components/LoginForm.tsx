@@ -2,35 +2,43 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Typography, Modal } from "antd";
+import { Button, Form, Input, Typography, Modal, message } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { useTranslation } from 'react-i18next';
 import styles from '../less/LoginForm.module.less';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const LoginForm: React.FC = () => {
+  const sitekey = "6Ld4kSQqAAAAAL9l-A9TuEO_uV2zTA2lk5pLSJGq";
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = async (values: any) => {
+    if (!recaptchaValue) {
+      message.error('Lütfen reCAPTCHA doğrulamasını tamamlayın.');
+      return;
+    }
+
     const users = [
-      { username: 'admin@admin.com', password: 'admin123', role: 'admin' },
-      { username: 'customer@customer.com', password: 'customer123', role: 'customer' },
+      { email: 'admin@admin.com', password: 'admin123', role: 'admin' },
+      { email: 'customer@customer.com', password: 'customer123', role: 'customer' },
     ];
 
     const user = users.find(
-      (user) => user.username === values.email && user.password === values.password
+      (user) => user.email === values.email && user.password === values.password
     );
 
     if (user) {
-      dispatch(login({ username: user.username, role: user.role }));
+      dispatch(login({ email: user.email, role: user.role }));
       navigate(user.role === 'admin' ? '/admin' : '/');
     } else {
-      alert('Geçersiz kullanıcı adı veya şifre');
+      alert('Geçersiz kullanıcı adı veya şifre.');
     }
   };
 
@@ -60,6 +68,10 @@ const LoginForm: React.FC = () => {
     });
   };
 
+  const onRecaptchaChange = (value: string | null) => {
+    setRecaptchaValue(value);
+  };
+
   return (
     <>
       <Form
@@ -87,7 +99,7 @@ const LoginForm: React.FC = () => {
             size="large"
             prefix={<MailOutlined />}
             placeholder="Email"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Item>
 
@@ -114,6 +126,16 @@ const LoginForm: React.FC = () => {
           </a>
         </Form.Item>
 
+        <Form.Item>
+          <ReCAPTCHA
+            sitekey={sitekey}
+            onChange={onRecaptchaChange}
+            hl={localStorage.getItem('language')}
+            size='normal'
+          />
+
+        </Form.Item>
+
         <Form.Item style={{ marginBottom: "0px" }}>
           <Button block type="primary" htmlType="submit">
             {t('HomePage.loginButton')}
@@ -125,11 +147,11 @@ const LoginForm: React.FC = () => {
         </Form.Item>
 
         <Form.Item style={{ marginBottom: "0px" }}>
-          <div style={{ display: 'flex',justifyContent:'space-between', gap: '10px',marginTop:10 }}>
-            <Button type="default" style={{width:'100%'}} onClick={fillCustomerInfo}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', marginTop: 10 }}>
+            <Button type="default" style={{ width: '100%' }} onClick={fillCustomerInfo}>
               Customer User
             </Button>
-            <Button type="default" style={{width:'100%'}} onClick={fillAdminInfo}>
+            <Button type="default" style={{ width: '100%' }} onClick={fillAdminInfo}>
               Admin User
             </Button>
           </div>

@@ -5,7 +5,7 @@ import styles from '../../src/less/LoginForm.module.less';
 
 const { Title } = Typography;
 
-export default function App() {
+export default function LoginPage() {
     const screens = Grid.useBreakpoint();
     const { t } = useTranslation();
 
@@ -21,9 +21,7 @@ export default function App() {
                         {t('LoginPage.title')}
                     </Title>
                 </div>
-
                 <LoginForm />
-
             </div>
         </section>
     );

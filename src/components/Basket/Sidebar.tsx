@@ -19,7 +19,7 @@ const BaseketSidebar: FC<BaseketSidebarProps> = ({ totalPrice, onClick }) => {
             <Card title={t('BasketPage.title')} bordered={false} style={{ width: '100%' }}>
                 {cart.length > 0 && (
                     <>
-                        <Button type="primary" size="large" style={{ width: '100%' }}>
+                        <Button type="primary" size="large" style={{ width: '100%' }} onClick={onClick}>
                             {t('BasketPage.confirmCart')}
                         </Button>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10 }}>
