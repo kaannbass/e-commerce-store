@@ -2,16 +2,11 @@ import React from 'react';
 import { Collapse, Slider, Select, Button, Radio } from 'antd';
 import { useTranslation } from 'react-i18next';
 import Sider from 'antd/es/layout/Sider';
+import { getCategoriesData } from '../../data';
 
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const categories = [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing"
-];
 
 interface FilterSidebarProps {
     onApplyFilters: () => void;
@@ -34,6 +29,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
 }) => {
     const { t } = useTranslation();
 
+    const categories = getCategoriesData(t)
+
     return (
         <Sider width={300} style={{ background: '#fff', padding: '20px' }}>
             <h1>{t('ProductPage.filter')}</h1>
@@ -42,8 +39,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
                     <Radio.Group onChange={onCategoryChange} value={selectedCategory}>
                         <Radio value="">{t('ProductPage.allCategories')}</Radio>
                         {categories.map(category => (
-                            <div key={category}>
-                                <Radio value={category}>{category}</Radio>
+                            <div key={category.id}>
+                                <Radio value={category.value}>{category.text}</Radio>
                             </div>
                         ))}
                     </Radio.Group>

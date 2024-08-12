@@ -1,16 +1,10 @@
 import React from 'react';
 import { Drawer, Button, Collapse, Slider, Select, Radio } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { getCategoriesData } from '../../data';
 
 const { Panel } = Collapse;
 const { Option } = Select;
-
-const categories = [
-  "electronics",
-  "jewelery",
-  "men's clothing",
-  "women's clothing"
-];
 
 interface FilterDrawerProps {
   visible: boolean;
@@ -37,6 +31,8 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const categories = getCategoriesData(t)
+
   return (
     <Drawer
       title={t('ProductPage.filter')}
@@ -50,8 +46,8 @@ const FilterDrawer: React.FC<FilterDrawerProps> = ({
           <Radio.Group onChange={onCategoryChange} value={selectedCategory}>
             <Radio value="">{t('ProductPage.allCategories')}</Radio>
             {categories.map(category => (
-              <div key={category}>
-                <Radio value={category}>{category}</Radio>
+              <div key={category.id}>
+                <Radio value={category.value}>{category.text}</Radio>
               </div>
             ))}
           </Radio.Group>

@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Select, message, Upload, Image, Tooltip } from 'antd';
+import { Form, Input, Button, Select, message, Upload, Image } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { baseURL } from '../../../config';
+import { getCategoriesData } from '../../../data';
+import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
-
-const categories = [
-    "electronics",
-    "jewelery",
-    "men's clothing",
-    "women's clothing"
-];
 
 const getBase64 = (file: File): Promise<string> =>
     new Promise((resolve, reject) => {
@@ -20,7 +14,11 @@ const getBase64 = (file: File): Promise<string> =>
         reader.onerror = (error) => reject(error);
     });
 
+
+
 const AddNewProductPage: React.FC = () => {
+    const { t } = useTranslation();
+    const categories = getCategoriesData(t)
     const [form] = Form.useForm();
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
@@ -32,6 +30,14 @@ const AddNewProductPage: React.FC = () => {
             const base64Image = imageFile ? await getBase64(imageFile) : '';
 
             const existingProducts = JSON.parse(localStorage.getItem('NewProduct') || '[]');
+
+            const productExists = existingProducts.some((item) => item.title === values.title);
+
+            if (productExists) {
+                message.warning('A product with this title already exists.');
+                return;
+            }
+
             const newId = existingProducts.length > 0 ? existingProducts[existingProducts.length - 1].id + 1 : 1;
 
             const productData = {
@@ -41,23 +47,11 @@ const AddNewProductPage: React.FC = () => {
             };
 
             existingProducts.push(productData);
+
             localStorage.setItem('NewProduct', JSON.stringify(existingProducts));
 
-            const response = await fetch(baseURL+'/products', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(productData),
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const json = await response.json();
-            console.log(json);
             message.success('Product added successfully!');
+
             form.resetFields();
             setFileList([]);
         } catch (error) {
@@ -65,6 +59,7 @@ const AddNewProductPage: React.FC = () => {
             message.error('Failed to add product.');
         }
     };
+
 
     const handlePreview = async (file: any) => {
         if (!file.url && !file.preview) {
@@ -146,7 +141,7 @@ const AddNewProductPage: React.FC = () => {
                 >
                     <Select placeholder="Select a category">
                         {categories.map(category => (
-                            <Option key={category} value={category}>{category}</Option>
+                            <Option key={category.id} value={category.value}>{category.text}</Option>
                         ))}
                     </Select>
                 </Form.Item>

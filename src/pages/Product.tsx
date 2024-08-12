@@ -1,51 +1,51 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Layout, Button, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/productSlice';
 import { MenuOutlined } from '@ant-design/icons';
-import { FilterDrawer, FilterSidebar,ProductCard } from '../components';
-
+import { FilterDrawer, FilterSidebar, ProductCard } from '../components';
+import { RootState } from '../store';
 const { Content } = Layout;
 
-const Product = () => {
-  const [priceRange, setPriceRange] = useState([0, 200]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [sortOrder, setSortOrder] = useState('asc');
+const Product: React.FC = () => {
+  const [priceRange, setPriceRange] = useState<number[]>([0, 200]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [visible, setVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+  const products = useSelector((state: RootState) => state.products.products);
   const { t } = useTranslation();
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
-  const handleCategoryChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handleCategoryChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedCategory(e.target.value);
-  };
+  }, []);
 
-  const handlePriceChange = (value: SetStateAction<number[]>) => {
+  const handlePriceChange = useCallback((value: number[]) => {
     setPriceRange(value);
-  };
+  }, []);
 
-  const handleSortChange = (value: SetStateAction<string>) => {
+  const handleSortChange = useCallback((value: 'asc' | 'desc') => {
     setSortOrder(value);
-  };
+  }, []);
 
-  const applyFilters = () => {
-    const filtered = products.filter((product: { price: number; category: string; }) =>
+  const applyFilters = useCallback(() => {
+    const filtered = products.filter((product) =>
       product.price >= priceRange[0] && product.price <= priceRange[1] &&
       (selectedCategory ? product.category === selectedCategory : true)
     );
 
-    const sorted = filtered.sort((a: { price: number; }, b: { price: number; }) => {
+    const sorted = filtered.sort((a, b) => {
       return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
     });
 
     setFilteredProducts(sorted);
     setVisible(false);
-  };
+  }, [products, priceRange, selectedCategory, sortOrder]);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -57,14 +57,12 @@ const Product = () => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 1100px)');
-
-    const handleMediaChange = (event) => {
+    setIsMobile(mediaQuery.matches);
+    const handleMediaChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
     };
 
     mediaQuery.addEventListener('change', handleMediaChange);
-    handleMediaChange(mediaQuery);
-
     return () => {
       mediaQuery.removeEventListener('change', handleMediaChange);
     };
@@ -74,14 +72,16 @@ const Product = () => {
     <Layout style={{ minHeight: '100vh' }}>
       {isMobile ? (
         <>
-          <Button
-            type="primary"
-            icon={<MenuOutlined />}
-            onClick={() => setVisible(true)}
-            style={{ marginBottom: 16 }}
-          >
-            {t('ProductPage.filter')}
-          </Button>
+          <div style={{ padding: 24, margin: 0 }}>
+            <Button
+              type="primary"
+              icon={<MenuOutlined />}
+              onClick={() => setVisible(true)}
+              style={{ marginBottom: 16, width: '100%' }}
+            >
+              {t('ProductPage.filter')}
+            </Button>
+          </div>
           <FilterDrawer
             visible={visible}
             onClose={() => setVisible(false)}
@@ -106,20 +106,13 @@ const Product = () => {
         />
       )}
       <Layout style={{ padding: '0 24px 24px' }}>
-        <Content
-          style={{
-            padding: 24,
-            margin: 0,
-            minHeight: 280,
-            background: '#fff',
-          }}
-        >
+        <Content style={{ padding: 24, margin: 0, minHeight: 280, background: '#fff' }}>
           <Row gutter={[16, 16]} justify="start">
             {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                onNavigate={() => navigator("/" + t('ProductPage.url') + `/${product.id}`)}
+                onNavigate={() => navigate("/" + t('ProductPage.url') + `/${product.id}`)}
               />
             ))}
           </Row>

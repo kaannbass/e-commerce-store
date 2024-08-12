@@ -67,7 +67,11 @@
         "priceLowToHigh": "Fiyat: Düşükten Yükseğe",
         "priceHighToLow": "Fiyat: Yüksekten Düşüğe",
         "priceRange": "Fiyat Aralığı",
-        "sortBy": "Göre Sırala"
+        "sortBy": "Göre Sırala",
+        "electronics": "elektronik",
+        "jewelery": "takı",
+        "mensClothing": "erkek giyimi",
+        "womensClothing": "kadın giyimi"
     },
     "NewProductPage": {
         "url": "yeni-urunler"

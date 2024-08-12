@@ -2,20 +2,12 @@ import { Card, Col, Row } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import electronics from '../../assets/electronics.jpg';
-import jewelery from '../../assets/jewelery.jpg';
-import femaleClothes from '../../assets/female_clothes.jpg';
-import mensClothing from '../../assets/mens_clothing.jpg';
 import { useTranslation } from 'react-i18next';
+import { getCardData } from '../../data';
 
 const CardCategory: React.FC = () => {
     const { t } = useTranslation();
-    const cardData = [
-        { title: t('HomePage.electronics'), src: electronics, link: t('ProductPage.url') },
-        { title: t('HomePage.jewelery'), src: jewelery, link: t('ProductPage.url') },
-        { title: t("HomePage.men's clothing"), src: femaleClothes, link: t('ProductPage.url') },
-        { title: t("HomePage.women's clothing"), src: mensClothing, link: t('ProductPage.url') },
-    ];
+    const cardData = getCardData(t);
 
     return (
         <Row gutter={[16, 8]} justify="center" align="middle" style={{ marginTop: 25 }}>

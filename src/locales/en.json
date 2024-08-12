@@ -67,7 +67,11 @@
         "priceLowToHigh": "Price: Low to High",
         "priceHighToLow": "Price: High to Low",
         "priceRange": "Price Range",
-        "sortBy": "Sort By"
+        "sortBy": "Sort By",
+        "electronics": "electronics",
+        "jewelery": "jewelery",
+        "mensClothing": "men's clothing",
+        "womensClothing": "women's clothing"
     },
     "NewProductPage": {
         "url": "new-product"

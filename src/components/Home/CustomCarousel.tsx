@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Navigation, Scrollbar, A11y } from 'swiper/modules';
@@ -71,4 +71,4 @@ const CustomCarousel: React.FC = () => {
   );
 };
 
-export default CustomCarousel;
+export default memo(CustomCarousel);
