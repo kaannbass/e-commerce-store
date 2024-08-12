@@ -15,7 +15,7 @@ npm install
 # Running the Application
 Once the dependencies are installed, use the following command to start the project:
 ```bash
-npm run start
+npm run dev
 ```
 This command will launch the React Native CLI, and you can follow the instructions to open the app on your device or emulator.
 
